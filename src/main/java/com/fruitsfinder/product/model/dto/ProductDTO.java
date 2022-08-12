@@ -18,5 +18,6 @@ public class ProductDTO {
     private ProductName productName;
     private PriceDTO price;
     private Set<ImageDTO> images = new HashSet<>();
+    private AddressDTO address;
 
 }

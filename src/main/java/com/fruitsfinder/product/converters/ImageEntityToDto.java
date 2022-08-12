@@ -12,7 +12,7 @@ public class ImageEntityToDto implements Function<Image, ImageDTO> {
 
 
     @Override
-    public ImageDTO apply(Image image) {
+    public ImageDTO apply(final Image image) {
         return ImageDTO
                 .builder()
                 .publicId(UUID.randomUUID().toString())

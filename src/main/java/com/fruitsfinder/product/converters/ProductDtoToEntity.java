@@ -15,6 +15,8 @@ public class ProductDtoToEntity implements Function<ProductDTO, Product> {
 
     private final ImageDtoToEntity imageDtoToEntity;
     private final PriceDtoToEntity priceDtoToEntity;
+    private final AddressDtoToEntity addressDtoToEntity;
+
     @Override
     public Product apply(final ProductDTO productDTO) {
         return Product
@@ -22,6 +24,7 @@ public class ProductDtoToEntity implements Function<ProductDTO, Product> {
                 .publicId(UUID.randomUUID().toString())
                 .productName(productDTO.getProductName())
                 .price(priceDtoToEntity.apply(productDTO.getPrice()))
+                .address(addressDtoToEntity.apply(productDTO.getAddress()))
                 .images(productDTO
                         .getImages()
                         .stream()

@@ -14,14 +14,16 @@ public class ProductEntityToDto implements Function<Product, ProductDTO> {
 
     private final ImageEntityToDto imageEntityToDto;
     private final PriceEntityToDto priceEntityToDto;
+    private final AddressEntityToDto addressEntityToDto;
 
     @Override
-    public ProductDTO apply(Product product) {
+    public ProductDTO apply(final Product product) {
         return ProductDTO
                 .builder()
                 .publicId(product.getPublicId())
                 .productName(product.getProductName())
                 .price(priceEntityToDto.apply(product.getPrice()))
+                .address(addressEntityToDto.apply(product.getAddress()))
                 .images(product
                         .getImages()
                         .stream()

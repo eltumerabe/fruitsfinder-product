@@ -27,15 +27,23 @@ public class Product{
             fetch = FetchType.LAZY,
             orphanRemoval = true
     )
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "pr_id")
     private Price price;
     @OneToMany(
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
             orphanRemoval = true
     )
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "pi_id")
     private Set<Image> images = new HashSet<>();
+
+    @OneToOne(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            orphanRemoval = true
+    )
+    @JoinColumn(name = "pa_id")
+    private Address address;
 
 
 }

@@ -9,7 +9,7 @@ import java.util.function.Function;
 @Component
 public class PriceEntityToDto implements Function<Price,PriceDTO> {
     @Override
-    public PriceDTO apply( Price price) {
+    public PriceDTO apply(final Price price) {
         return PriceDTO
                 .builder()
                 .currency(price.getCurrency())
