@@ -27,7 +27,7 @@ public class Address {
             fetch = FetchType.LAZY,
             orphanRemoval = true
     )
-    @JoinColumn(name = "pl_id")
+    @JoinColumn(name = "product_location_id")
     private Location location;
 
     @OneToOne

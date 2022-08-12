@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,7 +18,11 @@ public class ProductDTO {
     private String publicId;
     private ProductName productName;
     private PriceDTO price;
-    private Set<ImageDTO> images = new HashSet<>();
     private AddressDTO address;
+    private Set<ImageDTO> images = new HashSet<>();
+    private LocalDateTime createdAt;
+    private LocalDateTime modifiedAt;
+    private String createdBy;
+
 
 }

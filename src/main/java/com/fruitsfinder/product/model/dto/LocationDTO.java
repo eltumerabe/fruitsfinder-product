@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @Builder(toBuilder = true)
 public class LocationDTO {
-    private Long id;
     private Double longitude;
     private Double latitude;
 }

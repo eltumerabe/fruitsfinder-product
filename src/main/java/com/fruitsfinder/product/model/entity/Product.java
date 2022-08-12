@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,14 +28,14 @@ public class Product{
             fetch = FetchType.LAZY,
             orphanRemoval = true
     )
-    @JoinColumn(name = "pr_id")
+    @JoinColumn(name = "product_price_id")
     private Price price;
     @OneToMany(
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
             orphanRemoval = true
     )
-    @JoinColumn(name = "pi_id")
+    @JoinColumn(name = "product_image_id")
     private Set<Image> images = new HashSet<>();
 
     @OneToOne(
@@ -42,8 +43,12 @@ public class Product{
             fetch = FetchType.LAZY,
             orphanRemoval = true
     )
-    @JoinColumn(name = "pa_id")
+    @JoinColumn(name = "product_address_id")
     private Address address;
+
+    private LocalDateTime createdAt;
+    private LocalDateTime modifiedAt;
+    private String createdBy;
 
 
 }
