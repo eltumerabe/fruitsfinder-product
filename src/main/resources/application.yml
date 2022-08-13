@@ -1,3 +1,8 @@
 spring:
   application:
     name: fruitsfinder-product
+
+logging:
+  file:
+    name: logs
+    path: /opt/logs
