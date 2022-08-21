@@ -3,6 +3,7 @@ package com.fruitsfinder.product.controller;
 import com.fruitsfinder.product.model.dto.ProductDTO;
 import com.fruitsfinder.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<ProductDTO> createProduct(@RequestBody final ProductDTO productDTO) {
-        return ResponseEntity.ok(productService.createProduct(productDTO));
+        return new ResponseEntity<>(productService.createProduct(productDTO), HttpStatus.CREATED);
     }
 
     @GetMapping("{publicId}")

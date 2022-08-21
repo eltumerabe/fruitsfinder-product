@@ -5,4 +5,3 @@ spring:
 logging:
   file:
     name: logs
-    path: /opt/logs

@@ -2,6 +2,9 @@ package com.fruitsfinder.product.service.impl;
 
 import com.fruitsfinder.product.converters.ProductDtoToEntity;
 import com.fruitsfinder.product.converters.ProductEntityToDto;
+import com.fruitsfinder.product.enums.ErrorLocation;
+import com.fruitsfinder.product.enums.ErrorMessage;
+import com.fruitsfinder.product.exception.ResourceNotFoundException;
 import com.fruitsfinder.product.model.dto.ProductDTO;
 import com.fruitsfinder.product.repository.ProductRepository;
 import com.fruitsfinder.product.service.ProductService;
@@ -29,13 +32,18 @@ public class ProductServiceImpl implements ProductService {
                 .orElse(null);
     }
 
-
     @Override
-    public ProductDTO getByPublicId(String publicId) {
+    public ProductDTO getByPublicId(final String publicId) throws ResourceNotFoundException {
         return productRepository.findByPublicId(publicId)
                 .map(productEntityToDto)
-                .orElse(null);
+                .orElseThrow(()-> ResourceNotFoundException
+                        .builder()
+                        .location(ErrorLocation.SERVICE)
+                        .message(ErrorMessage.RESOURCE_NOT_FOUND.toString())
+                        .publicId(publicId)
+                        .build());
     }
+
 
     @Override
     public List<ProductDTO> getAll(final int page, final int size) {
