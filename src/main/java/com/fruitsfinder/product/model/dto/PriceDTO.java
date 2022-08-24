@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 
@@ -16,7 +17,10 @@ import java.math.BigDecimal;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PriceDTO {
 
+    @NotNull(message = "value should not be null")
     private BigDecimal value;
+    @NotNull(message = "type should not be null")
     private String type;
+    @NotNull(message = "currency should not be null")
     private String currency;
 }

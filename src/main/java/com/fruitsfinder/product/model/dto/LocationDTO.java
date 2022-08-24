@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
 
 
 @AllArgsConstructor
@@ -14,6 +15,8 @@ import lombok.NoArgsConstructor;
 @Builder(toBuilder = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class LocationDTO {
+    @NotNull(message = "longitude should not be null")
     private Double longitude;
+    @NotNull(message = "latitude should not be null")
     private Double latitude;
 }

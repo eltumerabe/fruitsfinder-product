@@ -6,15 +6,22 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Builder(toBuilder = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AddressDTO {
+    @NotNull(message = "country should not be null")
     private String country;
+    @NotNull(message = "state should not be null")
     private String state;
+    @NotNull(message = "city should not be null")
     private String city;
     private String village;
-    private LocationDTO location;
+    @NotNull(message = "location should not be null")
+    private @Valid LocationDTO location;
 }
